@@ -15,14 +15,6 @@ DRAWING_SIZE = 2048
 OUTPUT_FILENAME = 'pattern_a.jpg'
 
 
-def make_subsection(coords: Tuple, draw: ImageDraw.Draw, color: Tuple):
-    '''
-    Draw subsection of the image
-    '''
-    # Fill
-    draw.rectangle(coords, color)
-
-
 def make_drawing(grid_dims, color_count=3):
     '''
     Draw a grid of images
@@ -65,6 +57,17 @@ def make_color_pallet(color_count: int):
     random_colors = [(random_gen(), random_gen(), random_gen()) for count in range(color_count)]
     complementary_colors = [get_complementary_color(c) for c in random_colors]
     return [c for row in zip(random_colors, complementary_colors) for c in row]
+
+
+def make_subsection(coords: Tuple, draw: ImageDraw.Draw, color: Tuple):
+    '''
+    Draw subsection of the image
+    '''
+    # Fill
+    draw.rectangle(coords, color)
+    complementary_color = get_complementary_color(color)
+    line_width = 50
+    draw.line(coords, fill=complementary_color, width=line_width)
 
 
 def get_complementary_color(color: Tuple) -> Tuple:
