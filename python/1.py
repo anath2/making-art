@@ -70,6 +70,13 @@ def make_subsection(coords: Tuple, draw: ImageDraw.Draw, color: Tuple):
     draw.line(coords, fill=complementary_color, width=line_width)
 
 
+def make_trisection():
+    '''
+    Draw trisection
+    '''
+    pass
+
+
 def get_complementary_color(color: Tuple) -> Tuple:
     return tuple(255 - c for c in color)
 
