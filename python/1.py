@@ -67,14 +67,19 @@ def make_subsection(coords: Tuple, draw: ImageDraw.Draw, color: Tuple):
     draw.rectangle(coords, color)
     complementary_color = get_complementary_color(color)
     line_width = 50
+    make_trisection(coords, draw, complementary_color)
     draw.line(coords, fill=complementary_color, width=line_width)
 
 
-def make_trisection():
+def make_trisection(square_coords, draw, complementary_color):
     '''
     Draw trisection
     '''
-    pass
+    top_left, bottom_right = square_coords
+    top_left_x, top_left_y = top_left
+    bottom_right_x, bottom_right_y = bottom_right
+    center_x = top_left_x + (bottom_right_x - top_left_x) / 2
+    center_y = top_left_y + (bottom_right_y - top_right_y) / 2
 
 
 def get_complementary_color(color: Tuple) -> Tuple:
